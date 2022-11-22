@@ -42,14 +42,16 @@ const insertContacts = async (db, nb = numContacts) => {
   const nberContactsByQueries = nb / nbQueries;
   const listPromises = [];
 
-  for (let i = 0; i < nbQueries; i++) {
-    const values = getContactsForQuery(iterator, nberContactsByQueries);
-    if (!values.length) break;
+  test = [['yo', 'yo@email.yo']];
+  db.run(sql, test);
+  // for (let i = 0; i < nbQueries; i++) {
+  //   const values = getContactsForQuery(iterator, nberContactsByQueries);
+  //   if (!values.length) break;
 
-    let placeholders = values.map((val) => '(?, ?)').join(',');
-    console.log(sql + placeholders, values);
-    listPromises.push(db.run(sql + placeholders, values));
-  }
+  //   let placeholders = values.map((val) => '(?, ?)').join(',');
+  //   console.log(sql + placeholders, values);
+  //   listPromises.push(db.run(sql + placeholders, values));
+  // }
 
   await Promise.all(listPromises);
 }

@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3')
 const open = require('sqlite').open
 const fs = require('fs')
 
-jest.setTimeout(60000);
+jest.setTimeout(180000);
 
 describe('Contacts insertion', () => {
     let db;
@@ -22,7 +22,7 @@ describe('Contacts insertion', () => {
         //await db.run('DROP TABLE contacts');
         await db.close();
     })
-    it.each([10, 100, 10000, 50000, 100000])('Measure insert time for multiple values', async (numbers) => {
+    it.each([10, 100, 10000, 50000, 100000, 1000000])('Measure insert time for multiple values', async (numbers) => {
         await insertContacts(db, numbers)
         const start = Date.now()
         await db.get(`SELECT name FROM contacts WHERE email = email-${numbers}@domain.tld`);
