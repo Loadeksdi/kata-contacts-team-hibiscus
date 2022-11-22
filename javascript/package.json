@@ -8,12 +8,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "standard": "standard --fix ."
+    "standard": "standard --fix .",
+    "test": "jest"
   },
   "devDependencies": {
     "standard": "^16.0.4"
   },
   "dependencies": {
+    "jest": "^29.3.1",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2"
   }
